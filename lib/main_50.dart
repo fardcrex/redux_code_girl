@@ -8,7 +8,7 @@ import 'package:redux/redux.dart';
 void main() {
   final store = Store<AppState>(
     appReducer,
-    initialState: AppState.initial(),
+    initialState: AppState(stateAlimentos: StateAlimentos(), stateUser: StateUser(), counter: 50),
     middleware: [],
   );
   runApp(MyApp(store: store));

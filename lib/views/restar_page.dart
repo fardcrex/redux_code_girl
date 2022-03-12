@@ -4,7 +4,12 @@ import 'widgets/button_operation.dart';
 import 'widgets/number_view.dart';
 
 class RestarPage extends StatelessWidget {
-  const RestarPage({Key? key}) : super(key: key);
+  final int counter;
+  final VoidCallback decrement;
+  final VoidCallback increment;
+
+  const RestarPage({Key? key, required this.counter, required this.decrement, required this.increment})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,18 +18,20 @@ class RestarPage extends StatelessWidget {
         centerTitle: true,
         leading: const SizedBox.shrink(),
         title: const Text('Restar Page'),
+        //   actions: const [FloatingIncrement(), SizedBox(width: 60)],
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const <Widget>[
-            _GoToSumaPageButton(),
-            NumberView(number: 0),
+          children: <Widget>[
+            const _GoToSumaPageButton(),
+            NumberView(number: counter),
+            TextButton(onPressed: increment, child: const Text('Incrementar')),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: decrement,
         tooltip: 'Increment',
         child: const Icon(Icons.minimize),
       ),
